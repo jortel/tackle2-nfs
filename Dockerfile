@@ -5,7 +5,7 @@ RUN echo -e "[centos8]" \
  "\nbaseurl = http://mirror.centos.org/centos/8-stream/BaseOS/x86_64/os/" \
  "\nenabled = 1" \
  "\ngpgcheck = 0" > /etc/yum.repos.d/centos.repo
-COPY nfs.sh /usr/local/bin/tackle-nfs
+COPY main.sh /usr/local/bin/tackle-nfs
 COPY export /etc/exports
 RUN microdnf -y install \
   nfs-utils \

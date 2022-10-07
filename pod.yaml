@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tackle-nfs
+  namespace: konveyor-tackle
+spec:
+  containers:
+  - name: main
+    image: quay.io/jortel/tackle2-nfs:latest
+    securityContext:
+      runAsUser: 0
