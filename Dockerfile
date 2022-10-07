@@ -1,4 +1,5 @@
 FROM registry.access.redhat.com/ubi8/ubi-minimal
+USER root
 RUN echo -e "[centos8]" \
  "\nname = centos8" \
  "\nbaseurl = http://mirror.centos.org/centos/8-stream/BaseOS/x86_64/os/" \
@@ -10,7 +11,8 @@ RUN microdnf -y install \
   nfs-utils \
  && microdnf -y clean all
 RUN mkdir -p /mnt/pv \
- && chmod 777 /mnt/pv
+ && chmod 777 /mnt/pv \
+ && modprobe nfs
 ENTRYPOINT ["/usr/local/bin/tackle-nfs"]
 
 LABEL name="konveyor/tackle2-nfs" \
